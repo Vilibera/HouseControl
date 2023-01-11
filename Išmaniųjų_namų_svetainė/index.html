@@ -1,0 +1,80 @@
+<?php require("php_code/login.php") ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/validationform.css"/>
+
+
+    <title>Login Page</title>
+   <?php
+         if($usererror!= null)
+               { ?> <style>.usererrors{display: block}</style> <?php
+         }
+         if($validerror!= null)
+               { ?> <style>.usererrors{display: block}</style> <?php
+         }
+   ?>
+
+
+</head>
+<body>
+    <section>
+        <div class="container">
+                <div class="user SignBox" >
+                    <div class="ImgBox" ><img src="./Images/LoginImgae.jpg"> </div>
+                        <div class="FormBox">
+                            <form method="POST" action="../php_code/login.php"  >
+                                <h2>Sign In </h2>
+                                <input class="Email"  type="text" name="Email" placeholder="Email" required name="Email" >
+                                <div id="Emailerror" >Please fill up your Email </div>
+                                <input class="password" type="password" name="password" placeholder="Password" required name="password">
+                                
+                                <p class="usererrors"><?php echo $usererror ?> </p>
+                              <!--  <button class="Loginbtn" href = "User/Pagrindinis.php" >Log in</button> -->
+                                <button class="Loginbtn" type="submit">Log in</button>  
+                                <p class="validerrors"><?php echo $usererror ?> </p>
+                                <p class="signup"> You don't have an account?<a href="#" onclick="toggleForm();"> Sign up</a>  </p>
+                           </form>
+
+                 </div>
+            </div>
+                <div class="user SignupBox" >
+
+                     <div class="FormBox">
+                        <form  method="POST" action="./php_code/registrationform.php"  >
+                            <h2>Create an account </h2>
+                            <div  class="UserInfo">
+                            <input class="fname" type="text" placeholder="First name" required name="fname" >
+                            <input class="sname" type="text" placeholder="Second name" required name="sname" >
+                            </div>
+                            <input class = "Username" type="text" placeholder="Username" required name="Username" >
+                            <input class="email" type="email" placeholder="Email address" required name="email" >
+                            <input class="PhoneNumeber" type="tel" placeholder="Phone number" required name="PhoneNumber" >
+                            <div  class="UserInfo">
+                            <input class="pass" type="password" placeholder="Password" required name="Password" >
+                            <input class="rpass" type="password" placeholder="Repeat password" required >
+                            </div>
+                            <button class="Loginbtn" type="submit">Sign up</button>
+                            <p class="signup"> Already have an account?<a href="#" onclick="toggleForm();"> Sign in</a>  </p>
+                       </form>
+
+                </div>
+                <div class="ImgBox" ><img src="./Images/SignUpImage.jpg"> </div>
+             </div>
+        </div>
+</section>
+<script src="./scripts/LoginValidation.js">  </script>
+<script>
+    function toggleForm()
+    {
+        section = document.querySelector('section');
+        container = document.querySelector('.container');
+        container.classList.toggle('active');
+        section.classList.toggle('active');
+    }
+</script>
+</body>
+</html>
